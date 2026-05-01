@@ -108,10 +108,11 @@ void filter_ascending(struct node *startPtr, int count_nodes)
             {
                 prevPtr->nextPtr = curPtr->nextPtr;
                 free(curPtr);
-				curPtr = prevPtr->nextPtr; // Added: assign curPtr back to a node instead of point to empty node
+				curPtr = prevPtr->nextPtr; // Added: assign curPtr to next node instead of point to empty node
+				continue; // Added: only if next num is > than current num, then will move current pointer to next, else just jump to next num
 			}
-            prevPtr = prevPtr->nextPtr;
-            curPtr = prevPtr->nextPtr;
+			prevPtr = prevPtr->nextPtr;
+			curPtr = prevPtr->nextPtr;
         }
     }
 }
